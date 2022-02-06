@@ -1,0 +1,74 @@
+<form>
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="card">
+        <!-- Tabla de usuarios -->
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <div
+                    style="
+                      font-size: 25px;
+                      padding-bottom: 20px;
+                      padding-top: 10px;
+                      color: #019df4;
+                    "> Restricción de usuarios
+                  </div>
+
+                  <input
+                    type="text"
+                    class="form-control col-sm-3 mb-4"
+                    placeholder="Buscar usuario ..."
+                    #txtSearch
+                    (keyup)="onSearchUsuario(txtSearch.value)"
+                  />
+
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>N°</th>
+                        <th>Usuarios</th>
+                        <th [ngStyle]="{ width: '150px' }">Restricción 1</th>
+                        <th [ngStyle]="{ width: '150px' }">Restricción 2</th>
+                        <th [ngStyle]="{ width: '150px' }">Restricción 3</th>
+                        <th class="text-nowrap">Cumplió</th>
+                      </tr>
+                    </thead>
+
+                    <!-- body of the table  -->
+                    <tbody
+                      *ngFor="let usuario of usuarios | filtro: page:search"
+                    >
+                      <tr>
+                        <td>{{ usuario.id }}</td>
+                        <td>{{ usuario.nombre }}</td>
+                        <td>{{ usuario.restriccion1 }}</td>
+                        <td>{{ usuario.restriccion2 }}</td>
+                        <td>{{ usuario.restriccion3 }}</td>
+                        <td>SI</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <button class="btn btn-primary" (click)="prevPage()">
+                  Anterior
+                </button>
+                &nbsp;
+                <button
+                  class="btn btn-secondary"
+                  (click)="nextPage()"
+                  [disabled]="(usuarios | filtro: page:search).length === 0"
+                >
+                  Siguiente
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
