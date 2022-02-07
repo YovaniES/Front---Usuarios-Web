@@ -1,0 +1,56 @@
+<!-- <button (click)="onNoClick()" class="icon-btn btn-trans c-orange moda-close-btn"> <mat-icon>close</mat-icon> </button>
+<div class="cli-title c-male">{{flat.id?'Gestión de piso':'+ Nuevo piso'}}</div>
+ -->
+<mat-card-content>
+  <div class="container">
+    <div (click)="onNoClick()">
+      <mat-icon>clear</mat-icon>
+    </div>
+
+    <div
+      style="
+        font-size: 20px;
+        padding-bottom: 20px;
+        padding-top: 10px;
+        color: #019df4;
+      "
+    >
+      Nueva restricción
+    </div>
+
+    <form [formGroup]="_restriccionForm" (submit)="onSubmit()">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Nombre de la restricción</mat-label>
+        <input
+          matInput
+          formControlName="nombre"
+          placeholder="Escriba el nombre de la restrición"
+        />
+      </mat-form-field>
+
+      <!-- Descripción de la restricción -->
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Descripción</mat-label>
+        <input
+          matInput
+          #message
+          maxlength="200"
+          type="text"
+          formControlName="descripcion"
+          class="form-control"
+        />
+        <mat-hint align="start"></mat-hint>
+        <mat-hint align="end">{{ message.value.length }} / 200</mat-hint>
+      </mat-form-field>
+
+      <!-- Boton guardar en el Modal -->
+      <div class="row">
+        <div class="col-4 mt-5">
+          <button mat-raised-button color="accent">
+            <mat-icon>save</mat-icon> Guardar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</mat-card-content>

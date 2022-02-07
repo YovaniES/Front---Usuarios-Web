@@ -1,0 +1,39 @@
+<mat-card>
+  <div
+    style="
+      font-size: 25px;
+      padding-bottom: 20px;
+      padding-top: 10px;
+      color: #019df4;
+    "
+  > Lista de restricciones
+  </div>
+
+  <!-- Boton de Agregar -->
+  <div class="row">
+    <div class="botonAgregar col-4 mt-2 mb-4">
+      <button mat-stroked-button color="primary">
+        <mat-icon (click)="addRestriccion()">add</mat-icon>Nueva Restricción
+      </button>
+    </div>
+  </div>
+
+
+  <!-- TABLA DE  RESTRICCIONES -->
+  <mat-card-content>
+    <div class="container">
+      <table class="table">
+        <thead>
+          <th>ID</th>
+          <th>Nombre de restricción</th>
+          <th>Perú</th>
+        </thead>
+        <tr *ngFor="let Restriccion of RestriccionList">
+          <td>{{ Restriccion.ID }}</td>
+          <td>{{Restriccion.nombre}}</td>
+          <td>{{ Restriccion.descripcion }}</td>
+        </tr>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>
